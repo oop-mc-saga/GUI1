@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 
@@ -13,15 +12,14 @@ import javax.swing.JToggleButton;
  *
  * @author tadaki
  */
-public class SimpleTimer extends javax.swing.JFrame implements Runnable {
+public class SimpleTimer extends javax.swing.JFrame {
 
     private final Timer timerLabel;
     private final Dimension timerDimension = new Dimension(400, 50);
     private final SetTimePanel setTimePanel;
     private Thread runner = null;
-    private volatile boolean running = false;
-    private final Color backgroundNormal;
-    private final Color backgroundOver = Color.RED;
+    private final Color foregroundNormal=Color.BLACK;
+    private final Color foregroundOver = Color.RED;
     private final JToggleButton toggle;
     private final JButton setButton;
 
@@ -31,16 +29,16 @@ public class SimpleTimer extends javax.swing.JFrame implements Runnable {
     public SimpleTimer() {
         initComponents();
         Font font = new Font("MS UI Gothic", 0, 24);
-        
+
         //時間を表示するTimerクラスの生成と設置
         timerLabel = new Timer();
         timerLabel.setMaximumSize(timerDimension);
         timerLabel.setPreferredSize(timerDimension);
         timerLabel.setFont(font);
-        timerLabel.setHorizontalAlignment(JLabel.CENTER);
+        timerLabel.setForegroundNormal(foregroundNormal);
+        timerLabel.setForegroundOver(foregroundOver);
         showPanel.add(timerLabel);
         setTimePanel = new SetTimePanel();
-        backgroundNormal = showPanel.getBackground();
 
         //START/STOPのトグルボタンの生成と配置
         toggle = new JToggleButton("START");
@@ -66,15 +64,12 @@ public class SimpleTimer extends javax.swing.JFrame implements Runnable {
         if (isRunning) {
             toggle.setText("STOP");
             timerLabel.start();
-            running = true;
-            runner = new Thread(this);
+            runner = new Thread(timerLabel);
             runner.start();
         } else {
             toggle.setText("START");
             timerLabel.stop();
-            running = false;
         }
-        showPanel.setBackground(backgroundNormal);
         pack();
     }
 
@@ -99,19 +94,6 @@ public class SimpleTimer extends javax.swing.JFrame implements Runnable {
             timerLabel.setMax(60 * m + s);
         } else {
             setTimePanel.setDefault();
-        }
-    }
-
-    @Override
-    public void run() {
-        while (running) {
-            if (!timerLabel.setTime()) {
-                showPanel.setBackground(backgroundOver);
-            }
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {
-            }
         }
     }
 
