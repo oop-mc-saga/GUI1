@@ -80,8 +80,6 @@ public class Main extends javax.swing.JFrame {
      */
     private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {
         int v = slider.getValue();
-        System.out.println("sliderの値が"
-                + String.valueOf(v) + "になりました。");
         label.setText(String.valueOf(v));
     }
 
