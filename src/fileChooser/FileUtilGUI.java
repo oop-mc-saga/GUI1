@@ -3,7 +3,7 @@ package fileChooser;
 import java.io.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import utils.FileIO;
+import myLib.utils.*;
 
 /**
  * fileChooserに関連したファイル関係の処理
@@ -31,13 +31,13 @@ public class FileUtilGUI {
         //読み出し開始
         BufferedReader in;
         try {
-            in = FileIO.openReader(file);//readerを開く
+            in = FileUtils.openReader(file);//readerを開く
         } catch (IOException ex) {
             showError(ex.getMessage());
             return null;
         }
         try {
-            String str = FileIO.readFromReader(in);//readerから読み出し
+            String str = FileUtils.readFromReader(in);//readerから読み出し
             return str;
         } catch (IOException ex) {
             showError(ex.getMessage());
@@ -60,7 +60,7 @@ public class FileUtilGUI {
             //保存開始
             BufferedWriter out;
             try {
-                out = FileIO.openWriter(file);
+                out = FileUtils.openWriter(file);
             } catch (FileNotFoundException ex) {
                 showError(ex.getMessage());
                 return;
