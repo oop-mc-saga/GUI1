@@ -10,7 +10,7 @@ import javax.swing.JMenuItem;
  */
 public class Main extends javax.swing.JFrame {
 
-    public enum Colors {//色を列挙型として定義
+    public enum Colors {//Define colors as enum instance
         ORANGE(Color.ORANGE), YELLOW(Color.YELLOW), GREEN(Color.GREEN);
         private final Color color;
 
