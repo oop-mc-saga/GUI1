@@ -13,7 +13,7 @@ import javax.swing.BorderFactory;
  */
 public class Main extends javax.swing.JFrame {
 
-    public enum Colors {//色を列挙型として定義
+    public enum Colors {//Define colors as enum instance
         ORANGE(Color.ORANGE), YELLOW(Color.YELLOW), GREEN(Color.GREEN);
         private final Color color;
 
@@ -43,20 +43,20 @@ public class Main extends javax.swing.JFrame {
             selectColors.add(item);
         }
 
-        //スライダーの生成
+        //Create slider instance
         slider = new JSlider();
         slider.setFont(font);
         slider.setPaintTicks(true);
         slider.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         slider.setBackground(Color.white);
-        //動作の定義
+        //Define slider response
         slider.addChangeListener(e -> sliderStateChanged(e));
-        menuBar.add(slider);//メニューバーへの追加
+        menuBar.add(slider);//Add slider to the menu
 
-        //ラベルの生成
+        //Create label instance
         label = new JLabel();
         label.setFont(font);
-        menuBar.add(label);//メニューバーへの追加
+        menuBar.add(label);//Add label to the menu
 
         int v = slider.getValue();
         label.setText(String.valueOf(v));
@@ -64,7 +64,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     /**
-     * 色を選択した際の動作
+     * Action at color selection
      *
      * @param c
      */
@@ -74,7 +74,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     /**
-     * スライダーを操作した際の動作
+     * Action at slider operation
      *
      * @param evt
      */
