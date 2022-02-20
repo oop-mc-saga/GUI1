@@ -103,16 +103,17 @@ public class FileChooserMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void openMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuActionPerformed
-        //file chooserを生成し、テキストファイルに限定
+        //Create file chooser and set filter for text files
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(dir);
         chooser.setFileFilter(
                 new FileNameExtensionFilter("Text File", "txt"));
 
-        int returnVal = chooser.showOpenDialog(this);//ダイアログの表示
+        int returnVal = chooser.showOpenDialog(this);//Show dialog
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = chooser.getSelectedFile();//選択したファイル
-            textArea.setText(FileUtilGUI.openFile(file));//textAreaへ表示
+            File file = chooser.getSelectedFile();//Selected file
+            //Show text in textArea
+            textArea.setText(FileUtilGUI.openFile(file));
             textArea.setVisible(true);
             filename = file.getName();
             setTitle(applicationName+" "+filename);
@@ -129,7 +130,7 @@ public class FileChooserMain extends javax.swing.JFrame {
     }//GEN-LAST:event_clearTextActionPerformed
 
     private void saveTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveTextActionPerformed
-        //file chooserを生成し、テキストファイルに限定
+        //Create file chooser and set filter for text files
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(dir);
         chooser.setFileFilter(new FileNameExtensionFilter("Text File", "txt"));
