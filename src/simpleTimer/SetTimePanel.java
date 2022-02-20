@@ -1,7 +1,8 @@
 package simpleTimer;
 
 /**
- * 制限時間を設定するパネル
+ * Panel for setting time limit
+ * 
  * @author tadaki
  */
 public class SetTimePanel extends javax.swing.JPanel {
@@ -65,21 +66,21 @@ public class SetTimePanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 204));
-        jLabel3.setText("時間を設定");
+        jLabel3.setText("Set time limit");
         add(jLabel3);
 
         minute.setColumns(3);
         minute.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(minute);
 
-        jLabel1.setText("分");
+        jLabel1.setText("min");
         add(jLabel1);
 
         second.setColumns(2);
         second.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         add(second);
 
-        jLabel2.setText("秒");
+        jLabel2.setText("sec");
         add(jLabel2);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -30,7 +30,7 @@ public class SimpleTimer extends javax.swing.JFrame {
         initComponents();
         Font font = new Font("MS UI Gothic", 0, 24);
 
-        //時間を表示するTimerクラスの生成と設置
+        //Create Timer instance
         timerLabel = new Timer();
         timerLabel.setMaximumSize(timerDimension);
         timerLabel.setPreferredSize(timerDimension);
@@ -40,13 +40,13 @@ public class SimpleTimer extends javax.swing.JFrame {
         showPanel.add(timerLabel);
         setTimePanel = new SetTimePanel();
 
-        //START/STOPのトグルボタンの生成と配置
+        //Create START/STOP toggle button
         toggle = new JToggleButton("START");
         toggle.setFont(font);
         toggle.addActionListener(evt -> toggleActionPerformed(evt));
         menuBar.add(toggle);
 
-        //タイマーの設定のダイアログを起動するボタンの生成と配置
+        //Create button for popping up SetTimerPanel
         setButton = new JButton("SET");
         setButton.setFont(font);
         setButton.addActionListener(e -> setTimeActionPerformed(e));
@@ -55,7 +55,7 @@ public class SimpleTimer extends javax.swing.JFrame {
     }
 
     /**
-     * START/STOP トグルボタンの動作
+     * Action of START/STOP toggle button
      *
      * @param evt
      */
@@ -74,21 +74,23 @@ public class SimpleTimer extends javax.swing.JFrame {
     }
 
     /**
-     * SET ボタンの動作
+     * Action of SET button
      *
      * @param evt
      */
     private void setTimeActionPerformed(java.awt.event.ActionEvent evt) {
-        //停止する
+        //Stop timer
         toggle.setSelected(false);
         toggle.setText("START");
         timerLabel.stop();
-        //設定用Dialogの表示
-        int answer = JOptionPane.showOptionDialog(new JFrame(), setTimePanel,
-                "時間設定", JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, null, null);
+        //Show dialog for setting
+        Object[] options = { "OK", "CANCEL" };
+        int answer = JOptionPane.showOptionDialog(
+                new JFrame(), setTimePanel,
+                "Set timer", JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (answer == JOptionPane.OK_OPTION) {
-            //OKが押されたときに、制限時間を設定
+            //Set time limit by pressing OK
             int m = setTimePanel.getMinute();
             int s = setTimePanel.getSecond();
             timerLabel.setMax(60 * m + s);

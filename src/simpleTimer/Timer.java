@@ -5,7 +5,9 @@ import java.util.Calendar;
 import javax.swing.JLabel;
 
 /**
- * 開始からの時間を表示するJLabel
+ * Showing time duration from the beginning
+ * 
+ * Extension of JLabel
  *
  * @author tadaki
  */
@@ -18,7 +20,7 @@ public final class Timer extends JLabel implements Runnable {
     private Color foregroundOver = Color.RED;
 
     /**
-     * コンストラクタ
+     * Constructor
      */
     public Timer() {
         setMax(max);
@@ -38,17 +40,17 @@ public final class Timer extends JLabel implements Runnable {
     }
 
     /**
-     * スタート
+     * Start this timer
      */
     public void start() {
-        startDate = Calendar.getInstance();//開始時刻を保持
+        startDate = Calendar.getInstance();//store the beginning
         setVisible(true);
         running = true;
         setForeground(foregroundNormal);
     }
 
     /**
-     * ストップ
+     * Stop this timer
      */
     public void stop() {
         setVisible(true);
@@ -56,7 +58,7 @@ public final class Timer extends JLabel implements Runnable {
     }
 
     /**
-     * タイマーの上限設定
+     * Set limit for timer
      *
      * @param max
      */
@@ -66,7 +68,7 @@ public final class Timer extends JLabel implements Runnable {
     }
 
     /**
-     * 秒を文字列に変換
+     * Convert seconds to string
      *
      * @param d
      * @return
@@ -76,14 +78,14 @@ public final class Timer extends JLabel implements Runnable {
         int s = d % 60;
         StringBuilder b = new StringBuilder();
         if (m > 0) {
-            b.append(m).append(" 分 ");
+            b.append(m).append(" min ");
         }
-        b.append(s).append(" 秒");
+        b.append(s).append(" sec");
         return b.toString();
     }
 
     /**
-     * 文字列に変換してラベルへ設定
+     * Show time string at this
      *
      * @param d
      */
@@ -95,16 +97,16 @@ public final class Timer extends JLabel implements Runnable {
     }
 
     /**
-     * 時刻設定
+     * Set timer
      *
-     * @return 終了時間を過ぎるとfalase
+     * @return If exceed, return false
      */
     public boolean setTime() {
         Calendar c = Calendar.getInstance();
-        //開始時刻から現在までの秒数
+        //Get duration (sec) from the beginning
         int d = (int) (c.getTimeInMillis() - startDate.getTimeInMillis()) / 1000;
         setTimeString(d);
-        if (d >= max) {//終了を過ぎている
+        if (d >= max) {//Exceed the limit
             setForeground(foregroundOver);
             return false;
         }
