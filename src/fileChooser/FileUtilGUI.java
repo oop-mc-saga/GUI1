@@ -3,11 +3,10 @@ package fileChooser;
 import java.io.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import myLib.utils.*;
 
 /**
  * Methods operating files for fileChooser
- * 
+ *
  * @author tadaki
  */
 public class FileUtilGUI {
@@ -26,25 +25,45 @@ public class FileUtilGUI {
      */
     static public String openFile(File file) {
         if (!file.canRead()) {//Conform the file readable
-            showError("Can not read "+file.getName());
+            showError("Can not read " + file.getName());
             return null;
         }
         //Start reading file
         BufferedReader in;
         try {
-            in = FileUtils.openReader(file);//Open reader
+            in = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(file)));;//Open reader
         } catch (IOException ex) {
             showError(ex.getMessage());
             return null;
         }
         try {
             //Reading from the reader
-            String str = FileUtils.readFromReader(in);
+            String str = readFromReader(in);
+            in.close();
             return str;
         } catch (IOException ex) {
             showError(ex.getMessage());
             return null;
         }
+    }
+
+    /**
+     * Read contents from Reader and return as String
+     *
+     * @param in BufferedReader
+     * @return contents as a String
+     * @throws IOException
+     */
+    static public String readFromReader(BufferedReader in) throws IOException {
+        String nl = System.getProperty("line.separator");//
+        StringBuilder buf = new StringBuilder();
+        String line;
+        while ((line = in.readLine()) != null) {//read one line
+            buf.append(line);
+            buf.append(nl);//new line
+        }
+        return buf.toString();
     }
 
     /**
@@ -62,7 +81,8 @@ public class FileUtilGUI {
             //Start writing
             BufferedWriter out;
             try {
-                out = FileUtils.openWriter(file);
+                out = new BufferedWriter(
+                        new OutputStreamWriter(new FileOutputStream(file)));
             } catch (FileNotFoundException ex) {
                 showError(ex.getMessage());
                 return;
@@ -78,7 +98,7 @@ public class FileUtilGUI {
      * Confirm the file writable
      *
      * @param file
-     * @return 
+     * @return
      */
     static public boolean checkWritable(File file) {
         boolean isWritable = true;
@@ -109,7 +129,7 @@ public class FileUtilGUI {
      * Show dialog for confirming overwrite
      *
      * @param filename　File for saving
-     * @return 
+     * @return
      */
     static public boolean checkOverwrite(String filename) {
         boolean b = true;
