@@ -1,0 +1,3 @@
+これはテスト用のテキストファイルである。
+
+This is a text file for testing.

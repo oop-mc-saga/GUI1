@@ -22,7 +22,7 @@ public class SetTimePanel extends javax.swing.JPanel {
     public int getMinute() {
         int m = 0;
         try {
-            m = Integer.valueOf(minute.getText());
+            m = Integer.parseInt(minute.getText());
         } catch (NumberFormatException numberFormatException) {
         }
         if (m < 0) {
@@ -34,7 +34,7 @@ public class SetTimePanel extends javax.swing.JPanel {
     public int getSecond() {
         int s = 0;
         try {
-            s = Integer.valueOf(second.getText());
+            s = Integer.parseInt(second.getText());
         } catch (NumberFormatException numberFormatException) {
         }
         if (s > 59 || s < 0) {

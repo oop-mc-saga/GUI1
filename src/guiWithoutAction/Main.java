@@ -5,12 +5,13 @@ import java.awt.Font;
 import javax.swing.JMenuItem;
 
 /**
- *
+ * Simplest example of GUI
+ * 
  * @author tadaki
  */
 public class Main extends javax.swing.JFrame {
 
-    public enum Colors {//Define colors as enum instance
+    public enum Colors {//Define colors as an enum instance
         ORANGE(Color.ORANGE), YELLOW(Color.YELLOW), GREEN(Color.GREEN);
         private final Color color;
 
@@ -27,9 +28,9 @@ public class Main extends javax.swing.JFrame {
      * Creates new form MainWithJMenu
      */
     public Main() {
-        initComponents();
+        initComponents();//Init components defined by Design
         Font font = new Font("MS UI Gothic", 0, 24);
-        for (Colors m : Colors.values()) {
+        for (Colors m : Colors.values()) {//Add colors to the menu
             JMenuItem item = new JMenuItem(m.toString());
             item.setFont(font);
             selectColors.add(item);

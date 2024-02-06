@@ -32,7 +32,7 @@ public class FileUtilGUI {
         BufferedReader in;
         try {
             in = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(file)));;//Open reader
+                    new InputStreamReader(new FileInputStream(file)));//Open reader
         } catch (IOException ex) {
             showError(ex.getMessage());
             return null;

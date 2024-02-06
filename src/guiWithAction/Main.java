@@ -8,7 +8,8 @@ import javax.swing.JSlider;
 import javax.swing.BorderFactory;
 
 /**
- *
+ * Simple example of GUI with actions
+ * 
  * @author tadaki
  */
 public class Main extends javax.swing.JFrame {
@@ -36,9 +37,10 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         font = new Font("MS UI Gothic", 0, 24);
 
-        for (Colors m : Colors.values()) {
+        for (Colors m : Colors.values()) {//Add colors to the menu
             JMenuItem item = new JMenuItem(m.toString());
             item.setFont(font);
+            //Add an action to the item
             item.addActionListener(e -> colorItemPerformed(m));
             selectColors.add(item);
         }
@@ -49,7 +51,7 @@ public class Main extends javax.swing.JFrame {
         slider.setPaintTicks(true);
         slider.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         slider.setBackground(Color.white);
-        //Define slider response
+        //Define slider action
         slider.addChangeListener(e -> sliderStateChanged(e));
         menuBar.add(slider);//Add slider to the menu
 
@@ -163,10 +165,8 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main().setVisible(true);
         });
     }
 
