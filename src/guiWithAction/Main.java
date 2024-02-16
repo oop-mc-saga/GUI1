@@ -37,11 +37,11 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         font = new Font("MS UI Gothic", 0, 24);
 
-        for (Colors m : Colors.values()) {//Add colors to the menu
-            JMenuItem item = new JMenuItem(m.toString());
+        for (Colors color : Colors.values()) {//Add colors to the menu
+            JMenuItem item = new JMenuItem(color.toString());
             item.setFont(font);
             //Add an action to the item
-            item.addActionListener(e -> colorItemPerformed(m));
+            item.addActionListener(e -> colorItemPerformed(color));
             selectColors.add(item);
         }
 

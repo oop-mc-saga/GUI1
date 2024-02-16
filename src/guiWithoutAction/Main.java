@@ -30,8 +30,8 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();//Init components defined by Design
         Font font = new Font("MS UI Gothic", 0, 24);
-        for (Colors m : Colors.values()) {//Add colors to the menu
-            JMenuItem item = new JMenuItem(m.toString());
+        for (Colors color : Colors.values()) {//Add colors to the menu
+            JMenuItem item = new JMenuItem(color.toString());
             item.setFont(font);
             selectColors.add(item);
         }
@@ -115,10 +115,8 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main().setVisible(true);
         });
     }
 
