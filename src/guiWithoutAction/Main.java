@@ -11,11 +11,11 @@ import javax.swing.JMenuItem;
  */
 public class Main extends javax.swing.JFrame {
 
-    public enum Colors {//Define colors as an enum instance
+    public enum ColorItem {//Define colors as an enum instance
         ORANGE(Color.ORANGE), YELLOW(Color.YELLOW), GREEN(Color.GREEN);
         private final Color color;
 
-        Colors(Color color) {
+        ColorItem(Color color) {
             this.color = color;
         }
 
@@ -30,7 +30,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();//Init components defined by Design
         Font font = new Font("MS UI Gothic", 0, 24);
-        for (Colors color : Colors.values()) {//Add colors to the menu
+        for (ColorItem color : ColorItem.values()) {//Add colors to the menu
             JMenuItem item = new JMenuItem(color.toString());
             item.setFont(font);
             selectColors.add(item);
@@ -52,10 +52,10 @@ public class Main extends javax.swing.JFrame {
         selectColors = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("guiWithoutAction");
         setBackground(new java.awt.Color(204, 255, 204));
 
         menuBar.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
-        menuBar.setOpaque(false);
 
         fileMenu.setText("File");
         fileMenu.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N

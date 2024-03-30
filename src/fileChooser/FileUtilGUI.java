@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- * Methods operating files for fileChooser
+ * Methods for operating files for fileChooser
  *
  * @author tadaki
  */
@@ -18,7 +18,7 @@ public class FileUtilGUI {
     }
 
     /**
-     * Return content of file as string
+     * Open file and return content of file as string
      *
      * @param file specify file
      * @return content of file
@@ -33,7 +33,7 @@ public class FileUtilGUI {
         try {
             in = new BufferedReader(
                     new InputStreamReader(new FileInputStream(file)));//Open reader
-        } catch (IOException ex) {
+        } catch (IOException ex) {//Failed to open reader
             showError(ex.getMessage());
             return null;
         }
@@ -42,7 +42,7 @@ public class FileUtilGUI {
             String str = readFromReader(in);
             in.close();
             return str;
-        } catch (IOException ex) {
+        } catch (IOException ex) {//Failed to read from the reader
             showError(ex.getMessage());
             return null;
         }
@@ -56,7 +56,9 @@ public class FileUtilGUI {
      * @throws IOException
      */
     static public String readFromReader(BufferedReader in) throws IOException {
-        String nl = System.getProperty("line.separator");//
+        //Get the new line code independent of OS
+        String nl = System.getProperty("line.separator");
+        
         StringBuilder buf = new StringBuilder();
         String line;
         while ((line = in.readLine()) != null) {//read one line

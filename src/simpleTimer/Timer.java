@@ -43,7 +43,7 @@ public final class Timer extends JLabel implements Runnable {
      * Start this timer
      */
     public void start() {
-        startDate = Calendar.getInstance();//store the beginning
+        startDate = Calendar.getInstance();//store the beginning time
         setVisible(true);
         running = true;
         setForeground(foregroundNormal);
