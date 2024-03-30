@@ -14,11 +14,11 @@ import javax.swing.BorderFactory;
  */
 public class Main extends javax.swing.JFrame {
 
-    public enum Colors {//Define colors as enum instance
+    public enum ColorItem {//Define colors as enum instance
         ORANGE(Color.ORANGE), YELLOW(Color.YELLOW), GREEN(Color.GREEN);
         private final Color color;
 
-        Colors(Color color) {
+        ColorItem(Color color) {//Each color has a java.awt.color instance
             this.color = color;
         }
 
@@ -37,7 +37,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         font = new Font("MS UI Gothic", 0, 24);
 
-        for (Colors color : Colors.values()) {//Add colors to the menu
+        for (ColorItem color : ColorItem.values()) {//Add colors to the menu
             JMenuItem item = new JMenuItem(color.toString());
             item.setFont(font);
             //Add an action to the item
@@ -70,7 +70,7 @@ public class Main extends javax.swing.JFrame {
      *
      * @param c
      */
-    private void colorItemPerformed(Colors c) {
+    private void colorItemPerformed(ColorItem c) {
         System.out.println(c.toString());
         panel.setBackground(c.getColor());
     }

@@ -15,7 +15,7 @@ public class Main extends javax.swing.JFrame {
         ORANGE(Color.ORANGE), YELLOW(Color.YELLOW), GREEN(Color.GREEN);
         private final Color color;
 
-        ColorItem(Color color) {
+        ColorItem(Color color) {//Each color has a java.awt.color instance
             this.color = color;
         }
 
