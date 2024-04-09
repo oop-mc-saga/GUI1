@@ -97,20 +97,20 @@ public final class Timer extends JLabel implements Runnable {
     }
 
     /**
-     * Set timer
+     * set current time to this JLabel instance
      *
      * @return If exceed, return false
      */
     public boolean setTime() {
-        Calendar c = Calendar.getInstance();
+        Calendar c = Calendar.getInstance();//Current time
         //Get duration (sec) from the beginning
         int d = (int) (c.getTimeInMillis() - startDate.getTimeInMillis()) / 1000;
         setTimeString(d);
         if (d >= max) {//Exceed the limit
-            setForeground(foregroundOver);
+            setForeground(foregroundOver);//Change color
             return false;
         }
-        setVisible(true);
+        setVisible(true);//Set this JLabel visible
         return true;
     }
 

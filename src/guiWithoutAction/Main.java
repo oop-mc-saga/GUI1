@@ -33,7 +33,7 @@ public class Main extends javax.swing.JFrame {
         for (ColorItem color : ColorItem.values()) {//Add colors to the menu
             JMenuItem item = new JMenuItem(color.toString());
             item.setFont(font);
-            selectColors.add(item);
+            selectColors.add(item);//Add the item to the menu
         }
     }
 

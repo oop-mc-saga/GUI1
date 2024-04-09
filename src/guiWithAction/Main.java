@@ -42,7 +42,7 @@ public class Main extends javax.swing.JFrame {
             item.setFont(font);
             //Add an action to the item
             item.addActionListener(e -> colorItemPerformed(color));
-            selectColors.add(item);
+            selectColors.add(item);//Add the item to the menu
         }
 
         //Create slider instance
@@ -53,12 +53,12 @@ public class Main extends javax.swing.JFrame {
         slider.setBackground(Color.white);
         //Define slider action
         slider.addChangeListener(e -> sliderStateChanged(e));
-        menuBar.add(slider);//Add slider to the menu
+        menuBar.add(slider);//Add slider to the menubar
 
         //Create label instance
         label = new JLabel();
         label.setFont(font);
-        menuBar.add(label);//Add label to the menu
+        menuBar.add(label);//Add label to the menubar
 
         int v = slider.getValue();
         label.setText(String.valueOf(v));
